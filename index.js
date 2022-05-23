@@ -29,7 +29,6 @@ async function uploadFile(path, filename) {
 }
 
 const file = uuidv4().split("-")[0]
-console.log(file);
 
 app.use(express.json());
 
@@ -53,8 +52,6 @@ app.post("/send-image-to-email", async (req, res) => {
 		);
 
 		const url = await uploadFile("./out.png", "my-test.png");
-		console.log(url);
-		const image = req.body.image;
 		const email = req.body.email;
 		const SES_CONFIG = {
 			accessKeyId: process.env.ACCESS_KEY_ID,
@@ -83,7 +80,6 @@ app.post("/send-image-to-email", async (req, res) => {
 							</head>
 							<body>
 								<div>
-									ini gambar
 									<img src="${url}" alt="Red dot" />
 								</div>
 							</body>
